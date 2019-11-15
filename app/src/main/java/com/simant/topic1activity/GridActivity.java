@@ -58,6 +58,7 @@ public class GridActivity extends AppCompatActivity {
             public void onClick(View view) {
                 editTextScreen.setText(editTextScreen.getText() + "0");
                 textOperation.setText(editTextScreen.getText());
+                // condition for calculation
             }
         });
 
@@ -149,10 +150,6 @@ public class GridActivity extends AppCompatActivity {
         buttonDelete.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-//                Animation aniFade = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.item_selector);
-//                textOperation.startAnimation(aniFade);
-//                editTextScreen.startAnimation(aniFade);
-
                 editTextScreen.getText().clear();
                 textOperation.setText("");
                 num1=0;
@@ -217,15 +214,12 @@ public class GridActivity extends AppCompatActivity {
 
     public void sumNum() {
         if (checkNotation == 1) {
-//            finalResult = num1 + num2;
             editTextScreen.setText(String.valueOf(calculationModal.sum()));
             textOperation.setText(num1 + "+" + num2);
         } else if (checkNotation == 2) {
-//            finalResult = num1 - num2;
             editTextScreen.setText(String.valueOf(calculationModal.sub()));
             textOperation.setText(num1 + "-" + num2);
         } else if (checkNotation == 3) {
-//            finalResult = num1 * num2;
             editTextScreen.setText(String.valueOf(calculationModal.mul()));
             textOperation.setText(num1 + "x" + num2);
         } else if (checkNotation == 4) {
