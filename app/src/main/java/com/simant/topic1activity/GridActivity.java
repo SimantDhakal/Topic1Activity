@@ -23,6 +23,8 @@ public class GridActivity extends AppCompatActivity {
     public int checkNotation;
     LinearLayout linearLayoutTop;
 
+    CalculationModal calculationModal = new CalculationModal();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +58,6 @@ public class GridActivity extends AppCompatActivity {
             public void onClick(View view) {
                 editTextScreen.setText(editTextScreen.getText() + "0");
                 textOperation.setText(editTextScreen.getText());
-
             }
         });
 
@@ -164,6 +165,7 @@ public class GridActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 num2 = Integer.parseInt(editTextScreen.getText().toString());
+                calculationModal.setNum2(num2);
                 sumNum();
             }
         });
@@ -173,6 +175,7 @@ public class GridActivity extends AppCompatActivity {
             public void onClick(View view) {
                 checkNotation = 1;
                 num1 = Integer.parseInt(editTextScreen.getText().toString());
+                calculationModal.setNum1(num1);
                 textOperation.setText(num1 + "+");
                 editTextScreen.getText().clear();
             }
@@ -183,6 +186,7 @@ public class GridActivity extends AppCompatActivity {
             public void onClick(View view) {
                 checkNotation = 2;
                 num1 = Integer.parseInt(editTextScreen.getText().toString());
+                calculationModal.setNum1(num1);
                 textOperation.setText(num1 + "-");
                 editTextScreen.getText().clear();
             }
@@ -193,6 +197,7 @@ public class GridActivity extends AppCompatActivity {
             public void onClick(View view) {
                 checkNotation = 3;
                 num1 = Integer.parseInt(editTextScreen.getText().toString());
+                calculationModal.setNum1(num1);
                 textOperation.setText(num1 + "*");
                 editTextScreen.getText().clear();
             }
@@ -203,6 +208,7 @@ public class GridActivity extends AppCompatActivity {
             public void onClick(View view) {
                 checkNotation = 4;
                 num1 = Integer.parseInt(editTextScreen.getText().toString());
+                calculationModal.setNum1(num1);
                 textOperation.setText(num1 + "÷");
                 editTextScreen.getText().clear();
             }
@@ -211,20 +217,20 @@ public class GridActivity extends AppCompatActivity {
 
     public void sumNum() {
         if (checkNotation == 1) {
-            finalResult = num1 + num2;
-            editTextScreen.setText(String.valueOf(finalResult));
+//            finalResult = num1 + num2;
+            editTextScreen.setText(String.valueOf(calculationModal.sum()));
             textOperation.setText(num1 + "+" + num2);
         } else if (checkNotation == 2) {
-            finalResult = num1 - num2;
-            editTextScreen.setText(String.valueOf(finalResult));
+//            finalResult = num1 - num2;
+            editTextScreen.setText(String.valueOf(calculationModal.sub()));
             textOperation.setText(num1 + "-" + num2);
         } else if (checkNotation == 3) {
-            finalResult = num1 * num2;
-            editTextScreen.setText(String.valueOf(finalResult));
+//            finalResult = num1 * num2;
+            editTextScreen.setText(String.valueOf(calculationModal.mul()));
             textOperation.setText(num1 + "x" + num2);
         } else if (checkNotation == 4) {
             finalResult = num1 / num2;
-            editTextScreen.setText(String.valueOf(finalResult));
+            editTextScreen.setText(String.valueOf(calculationModal.div()));
             textOperation.setText(num1 + "÷" + num2);
         }
     }
